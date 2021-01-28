@@ -2,7 +2,8 @@
     const GRID_SIZE = 30;
     let score = 0;
     let SNAKE_SPEED = 7; //mvoe per second
-    let snake = [{ x: 10, y: 10 }];
+    const snakeReset = [{ x: 10, y: 10 }]
+    let snake = [...snakeReset];
     let food = randomPosition();
     let direction = { x: 1, y: 0 };
     let expandSnake = false;
@@ -120,6 +121,8 @@
             }
             gameRunning = false;
             alert(`Game Over, your score is ${score}`);
+            snake = [...snakeReset];
+            score = 0;
         }
     }
     function setEventListners() {
