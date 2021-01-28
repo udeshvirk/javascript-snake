@@ -1,0 +1,31 @@
+/* Add CSS here */
+body{
+    background-color: #ddd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+#board{
+    display: grid;
+    background-color: #cccccc;
+    border: 1px solid #000;
+    width: 500px;
+    height: 500px;
+    grid-template-columns: repeat(30,1fr);
+    grid-template-rows: repeat(30,1fr);
+}
+.snake{
+    background-color: green;
+    border: 1px solid #000;
+}
+.snake.head{
+    background-color: darkgreen;
+}
+.apple{
+    background-color: red;
+    border: 1px solid #000;
+}
