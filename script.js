@@ -19,12 +19,12 @@
     const scoreEle = document.getElementById('score');
     let gameRef = null;
     function drawSnake() {
-        snake.forEach((segment,i) => {
+        snake.forEach((segment, i) => {
             let snakeEle = document.createElement('div');
             snakeEle.style.gridRowStart = segment.x;
             snakeEle.style.gridColumnStart = segment.y;
             snakeEle.classList.add('snake');
-            if(i ===0){
+            if (i === 0) {
                 snakeEle.classList.add('head');
             }
             boardEle.appendChild(snakeEle);
@@ -60,9 +60,11 @@
             food = randomPosition();
             score += 10;
             printScore();
-            // SNAKE_SPEED++;
+            if (score % 100 === 0) {
+                SNAKE_SPEED++;
+                startMovement();
+            }
             expandSnake = true;
-            // startMovement();
         }
     }
     function printScore() {
@@ -79,7 +81,7 @@
     function onSnake(pos, skipHead = false) {
         if (!pos) return false;
         return snake.some((segment, i) => {
-            if(skipHead && i ===0) return false;
+            if (skipHead && i === 0) return false;
             return (segment.x === pos.x && segment.y === pos.y);
         })
     }
@@ -99,8 +101,8 @@
         printScore();
         startMovement();
     }
-    function startMovement(){
-        if(gameRef){
+    function startMovement() {
+        if (gameRef) {
             clearInterval(gameRef);
         }
         gameRunning = true;
@@ -113,10 +115,10 @@
             checkDeath();
         }, 1000 / SNAKE_SPEED);
     }
-    function checkDeath(){
+    function checkDeath() {
         const snakeHead = snake[0];
-        if(onSnake(snakeHead, true)){
-            if(gameRef){
+        if (onSnake(snakeHead, true)) {
+            if (gameRef) {
                 clearInterval(gameRef);
             }
             gameRunning = false;
@@ -165,13 +167,13 @@
                     currentDirection = e.key;
                     break;
             }
-            if(e.keyCode ===32){
-                if(gameRunning){
+            if (e.keyCode === 32) {
+                if (gameRunning) {
                     gameRunning = false;
-                    if(gameRef){
+                    if (gameRef) {
                         clearInterval(gameRef);
                     }
-                }else{
+                } else {
                     startMovement();
                 }
             }
