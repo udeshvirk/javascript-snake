@@ -108,11 +108,11 @@
         gameRunning = true;
         gameRef = setInterval(() => {
             boardEle.innerHTML = '';
-            moveFood();
-            drawFood();
-            moveSnake();
-            drawSnake();
             checkDeath();
+            moveFood();
+            moveSnake();
+            drawFood();
+            drawSnake();
         }, 1000 / SNAKE_SPEED);
     }
     function checkDeath() {
