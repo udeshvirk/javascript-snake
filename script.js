@@ -1,5 +1,5 @@
 (function () {
-    const GRID_SIZE = 30;
+    const GRID_SIZE = 25;
     let score = 0;
     let SNAKE_SPEED = 7; //mvoe per second
     const snakeReset = [{ x: 10, y: 10 }]
