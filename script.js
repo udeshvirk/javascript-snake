@@ -1,7 +1,7 @@
 (function () {
     const GRID_SIZE = 25;
     let score = 0;
-    let SNAKE_SPEED = 7; //mvoe per second
+    let SNAKE_SPEED = 5; //mvoe per second
     const snakeReset = [{ x: 10, y: 10 }]
     let snake = [...snakeReset];
     let food = randomPosition();
@@ -60,7 +60,7 @@
             food = randomPosition();
             score += 10;
             printScore();
-            if (score % 100 === 0) {
+            if (score % 50 === 0) {
                 SNAKE_SPEED++;
                 startMovement();
             }
@@ -125,6 +125,7 @@
             alert(`Game Over, your score is ${score}`);
             snake = [...snakeReset];
             score = 0;
+            SNAKE_SPEED = 5;
         }
     }
     function setEventListners() {
